@@ -81,7 +81,7 @@ class _Cadastropag1WidgetState extends State<Cadastropag1Widget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(40.0, 310.0, 40.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(40.0, 300.0, 40.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -716,22 +716,48 @@ class _Cadastropag1WidgetState extends State<Cadastropag1Widget> {
                   ),
                   Align(
                     alignment: AlignmentDirectional(0.0, -0.8),
-                    child: Container(
-                      width: 383.3,
-                      height: 209.9,
-                      decoration: BoxDecoration(),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/saborlocal-v2-jxvk62/assets/mk6n0oh6j45m/ChatGPT_Image_16_de_set._de_2026%2C_10_44_22.png',
-                          width: 267.8,
-                          height: 276.3,
-                          fit: BoxFit.cover,
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 190.0),
+                      child: Container(
+                        width: 383.3,
+                        height: 209.9,
+                        decoration: BoxDecoration(),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.network(
+                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/saborlocal-v2-jxvk62/assets/mk6n0oh6j45m/ChatGPT_Image_16_de_set._de_2026%2C_10_44_22.png',
+                            width: 267.8,
+                            height: 276.3,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ],
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(-0.08, -0.38),
+              child: Text(
+                'Preencha seus dados para continuar!',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      font: GoogleFonts.inter(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                      color: Colors.black,
+                      fontSize: 15.0,
+                      letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      decoration: TextDecoration.underline,
+                    ),
               ),
             ),
           ],

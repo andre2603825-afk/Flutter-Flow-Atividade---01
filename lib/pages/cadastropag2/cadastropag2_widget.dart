@@ -32,20 +32,23 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
     _model.cepTfTextController ??= TextEditingController();
     _model.cepTfFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.logradouroTFTextController ??= TextEditingController();
+    _model.logradouroTFFocusNode ??= FocusNode();
 
     _model.cidadeTFTextController ??= TextEditingController();
     _model.cidadeTFFocusNode ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.ufTfTextController ??= TextEditingController();
+    _model.ufTfFocusNode ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.bairroTFTextController ??= TextEditingController();
+    _model.bairroTFFocusNode ??= FocusNode();
 
     _model.textController6 ??= TextEditingController();
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController7 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
   }
 
   @override
@@ -123,6 +126,30 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                                         safeSetState(() {
                                           _model.cidadeTFTextController?.text =
                                               BuscaCEPCall.cidade(
+                                            (_model.respdaContaViaCep
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )!;
+                                        });
+                                        safeSetState(() {
+                                          _model.logradouroTFTextController
+                                              ?.text = BuscaCEPCall.rua(
+                                            (_model.respdaContaViaCep
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )!;
+                                        });
+                                        safeSetState(() {
+                                          _model.ufTfTextController?.text =
+                                              BuscaCEPCall.bairro(
+                                            (_model.respdaContaViaCep
+                                                    ?.jsonBody ??
+                                                ''),
+                                          )!;
+                                        });
+                                        safeSetState(() {
+                                          _model.bairroTFTextController?.text =
+                                              BuscaCEPCall.uf(
                                             (_model.respdaContaViaCep
                                                     ?.jsonBody ??
                                                 ''),
@@ -298,8 +325,8 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                               child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController2,
-                                  focusNode: _model.textFieldFocusNode1,
+                                  controller: _model.logradouroTFTextController,
+                                  focusNode: _model.logradouroTFFocusNode,
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
@@ -410,7 +437,8 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController2Validator
+                                  validator: _model
+                                      .logradouroTFTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -539,14 +567,14 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                               child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController4,
-                                  focusNode: _model.textFieldFocusNode2,
+                                  controller: _model.ufTfTextController,
+                                  focusNode: _model.ufTfFocusNode,
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     isDense: true,
-                                    labelText: '⌖ Bairro:',
+                                    labelText: '⌂ UF:',
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
@@ -651,7 +679,7 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController4Validator
+                                  validator: _model.ufTfTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -665,8 +693,135 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                               child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController5,
-                                  focusNode: _model.textFieldFocusNode3,
+                                  controller: _model.bairroTFTextController,
+                                  focusNode: _model.bairroTFFocusNode,
+                                  autofocus: false,
+                                  enabled: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    isDense: true,
+                                    labelText: '⌗ Bairro:',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                    filled: true,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                  cursorColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  enableInteractiveSelection: true,
+                                  validator: _model
+                                      .bairroTFTextControllerValidator
+                                      .asValidator(context),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.14, 0.12),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                child: TextFormField(
+                                  controller: _model.textController6,
+                                  focusNode: _model.textFieldFocusNode1,
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
@@ -777,7 +932,7 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController5Validator
+                                  validator: _model.textController6Validator
                                       .asValidator(context),
                                 ),
                               ),
@@ -791,8 +946,8 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                               child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController6,
-                                  focusNode: _model.textFieldFocusNode4,
+                                  controller: _model.textController7,
+                                  focusNode: _model.textFieldFocusNode2,
                                   autofocus: false,
                                   enabled: true,
                                   obscureText: false,
@@ -903,7 +1058,7 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primaryText,
                                   enableInteractiveSelection: true,
-                                  validator: _model.textController6Validator
+                                  validator: _model.textController7Validator
                                       .asValidator(context),
                                 ),
                               ),
@@ -1028,7 +1183,7 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                     alignment: AlignmentDirectional(0.0, -0.8),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 250.0),
                       child: Container(
                         width: 390.3,
                         height: 251.94,
@@ -1043,6 +1198,32 @@ class _Cadastropag2WidgetState extends State<Cadastropag2Widget> {
                           ),
                         ),
                       ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-0.08, -0.38),
+                    child: Text(
+                      'Agora, vamos cadastrar seu endereço:',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            color: Colors.black,
+                            fontSize: 15.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                            decoration: TextDecoration.underline,
+                          ),
                     ),
                   ),
                 ],

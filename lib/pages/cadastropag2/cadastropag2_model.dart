@@ -13,26 +13,30 @@ class Cadastropag2Model extends FlutterFlowModel<Cadastropag2Widget> {
   String? Function(BuildContext, String?)? cepTfTextControllerValidator;
   // Stores action output result for [Backend Call - API (buscaCEP)] action in CEP_TF widget.
   ApiCallResponse? respdaContaViaCep;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for Logradouro_TF widget.
+  FocusNode? logradouroTFFocusNode;
+  TextEditingController? logradouroTFTextController;
+  String? Function(BuildContext, String?)? logradouroTFTextControllerValidator;
   // State field(s) for Cidade_TF widget.
   FocusNode? cidadeTFFocusNode;
   TextEditingController? cidadeTFTextController;
   String? Function(BuildContext, String?)? cidadeTFTextControllerValidator;
+  // State field(s) for UF_TF widget.
+  FocusNode? ufTfFocusNode;
+  TextEditingController? ufTfTextController;
+  String? Function(BuildContext, String?)? ufTfTextControllerValidator;
+  // State field(s) for Bairro_TF widget.
+  FocusNode? bairroTFFocusNode;
+  TextEditingController? bairroTFTextController;
+  String? Function(BuildContext, String?)? bairroTFTextControllerValidator;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
+  FocusNode? textFieldFocusNode1;
   TextEditingController? textController6;
   String? Function(BuildContext, String?)? textController6Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController7;
+  String? Function(BuildContext, String?)? textController7Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -42,19 +46,22 @@ class Cadastropag2Model extends FlutterFlowModel<Cadastropag2Widget> {
     cepTfFocusNode?.dispose();
     cepTfTextController?.dispose();
 
-    textFieldFocusNode1?.dispose();
-    textController2?.dispose();
+    logradouroTFFocusNode?.dispose();
+    logradouroTFTextController?.dispose();
 
     cidadeTFFocusNode?.dispose();
     cidadeTFTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController4?.dispose();
+    ufTfFocusNode?.dispose();
+    ufTfTextController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    textController5?.dispose();
+    bairroTFFocusNode?.dispose();
+    bairroTFTextController?.dispose();
 
-    textFieldFocusNode4?.dispose();
+    textFieldFocusNode1?.dispose();
     textController6?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController7?.dispose();
   }
 }
